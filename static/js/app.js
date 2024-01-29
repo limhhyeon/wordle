@@ -1,4 +1,3 @@
-const 정답 = "HYEON";
 let attempts = 0;
 let index = 0;
 let timer;
@@ -34,8 +33,11 @@ function appStart() {
     clearInterval(timer);
   };
 
-  const Enterkey = () => {
+  const Enterkey = async () => {
     let 맞은갯수 = 0;
+    const 응답 = await fetch("/answer");
+    const 정답 = await 응답.json();
+
     for (let i = 0; i < 5; i++) {
       const 글자 = document.querySelector(
         `.board-block[data-index='${attempts}${i}']`
